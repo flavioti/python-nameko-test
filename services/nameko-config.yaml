@@ -1,0 +1,19 @@
+# rabbit mq connection
+#AMQP_URI: pyamqp://${RABBITMQ_USER:guest}:${RABBITMQ_PASSWORD:password}@${RABBITMQ_HOST:localhost}
+AMQP_URI: 'pyamqp://guest:guest@localhost'
+
+# The name of exchange that will be created
+rpc_exchange: 'nameko-rpc'
+
+# The max number of workers/containers that runs simultaneously.
+# O nameko sobe um worker para cada chamada RPC, é stateless
+max_workers: 10
+
+LOGGING:
+    version: 1
+    handlers:
+        console:
+            class: logging.StreamHandler
+    root:
+        level: 0
+        handlers: [console]
